@@ -1,0 +1,11 @@
+name: fdr
+channels:
+  - https://www.idiap.ch/software/bob/conda
+  - defaults
+  - http://www.idiap.ch/software/bob/conda
+dependencies:
+  - numpy
+  - bob.measure
+  - scipy
+  - matplotlib
+  - ipywidgets
