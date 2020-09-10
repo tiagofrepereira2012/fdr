@@ -75,7 +75,7 @@ def fairness_plot_clean(f_taus, labels, far_thresholds, epsilon=0.99, title=""):
     plt.ylabel('$FDR(\\tau)$', fontsize=18)
     plt.xlabel('$10^x$', fontsize=18)
     #plt.ylim((0, max([max(transform(f)) for f in f_taus])))
-    plt.ylim((0.4, 1.1))
+    plt.ylim((0.0, 1.1))
 
     plt.legend()
     plt.show()    
