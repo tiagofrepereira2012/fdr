@@ -37,27 +37,6 @@ def fpr_auc_score(f_tau, x):
     
     return -1*np.trapz(f_tau, x_scaled)
 
-
-def fairness_plot_raw(f_taus, labels, far_thresholds, epsilon=0.01, title=""):
-    
-    #transform = lambda x : np.log10(x)
-    transform = lambda x : x
-    
-    fig, ax = plt.subplots()
-
-    [ax.plot(transform(far_thresholds),transform(f_tau), label=label) for f_tau, label in zip(f_taus, labels)]
-    [plt.scatter(x, fprs[k]) for k in fprs]
-
-    ax.axhline(transform(epsilon), color="red", label="$\epsilon$")    
-    #ax.grid(True)
-    plt.title(title)
-    
-    plt.xlabel('$\\log(FMR^{dev})$', fontsize=20)
-    plt.ylabel('$\\log(F(\\tau))$', fontsize=20)
-
-    plt.legend()
-    plt.show()    
-
     
 def fairness_plot_clean(f_taus, labels, far_thresholds, epsilon=0.99, title=""):
     
@@ -76,6 +55,7 @@ def fairness_plot_clean(f_taus, labels, far_thresholds, epsilon=0.99, title=""):
     plt.xlabel('$10^x$', fontsize=18)
     #plt.ylim((0, max([max(transform(f)) for f in f_taus])))
     plt.ylim((0.0, 1.1))
+    plt.xticks(range(len(far_thresholds)), [f"10" for i in range(len(far_thresholds))])
 
     plt.legend()
     plt.show()    
