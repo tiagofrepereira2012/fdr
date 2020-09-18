@@ -9,7 +9,6 @@ def compute_fdr(A_tau, B_tau, alpha=0.5):
     max_B_tau = max([abs(x-y) for x in B_tau for y in B_tau])
     
     return 1-((alpha * max_A_tau+ (1-alpha)*max_B_tau))
-    #return 1-max(max_A_tau, max_B_tau)
 
 
 def compute_fairness_biometric_verification(impostors_per_demographic, genuines_per_demographic, thresholds, n_tau, n_demographics, alpha=0.5):
@@ -52,10 +51,13 @@ def fairness_plot_clean(f_taus, labels, far_thresholds, epsilon=0.99, title=""):
     
     #plt.xlabel('$\\log(FMR^{dev})$')
     plt.ylabel('$FDR(\\tau)$', fontsize=18)
-    plt.xlabel('$10^x$', fontsize=18)
+    plt.xlabel('x', fontsize=18)
     #plt.ylim((0, max([max(transform(f)) for f in f_taus])))
     plt.ylim((0.0, 1.1))
-    plt.xticks(range(len(far_thresholds)), [f"10" for i in range(len(far_thresholds))])
-
+    plt.xticks(np.arange(len(far_thresholds)+1), [""]+[f"$10^{i}$" for i in range(1, len(far_thresholds)+1)])
+    plt.xlim(0.95,len(far_thresholds)-1+0.05)
+    plt.grid(True)
+    
     plt.legend()
-    plt.show()    
+    #plt.savefig("XUXA.pdf")
+    plt.show()
