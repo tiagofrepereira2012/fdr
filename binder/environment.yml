@@ -10,3 +10,4 @@ dependencies:
   - matplotlib
   - ipywidgets
   - ipympl
+  - jupyterlab_launcher>=0.5.0
